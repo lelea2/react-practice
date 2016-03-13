@@ -10,7 +10,7 @@ npm i babel-loader babel-core babel-preset-es2015 babel-preset-react
 ```
 
 * State vs. stateless component
-```
+```jsx
 //Create State component
 class App extends React.Component {
   render() {
