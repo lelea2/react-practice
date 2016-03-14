@@ -9,7 +9,11 @@ npm i react react-dom --save
 npm i babel-loader babel-core babel-preset-es2015 babel-preset-react
 ```
 
-* State vs. stateless component
+###### State vs. stateless component
+
+* Render method
+Only allow to return one single node
+
 ```jsx
 //Create State component
 class App extends React.Component {
@@ -22,13 +26,10 @@ class App extends React.Component {
 const App = () => <h1>Hello World<h/h1>
 ```
 
-* Render method
-Only allow to return one single node
-
-* React props
+###### React props
 Passing element when rendering react component
 
-* Define react proptype
+###### Define react proptype
 ```javascript
 App.propTypes = {
   txt: React.PropTypes.string,
@@ -36,14 +37,14 @@ App.propTypes = {
 }
 ```
 
-* Define default property
+###### Define default property
 ```javascript
 App.defaultProps = {
   txt: 'this is the default text'
 };
 ```
 
-* Passing state to React app component
+###### Passing state to React app component
 ```javascript
 ReactDOM.render(
   <App cat={5} txt="this is the props value" />
@@ -51,10 +52,10 @@ ReactDOM.render(
 );
 ```
 
-* State Basics
+###### State Basics
 Collection of value that supposed to be mananged by component itself
 
-* Owner vs. Ownee relationship
+###### Owner vs. Ownee relationship
 When one component render another component in react, we call this owner/ownee relationship. Parent component also called "Composite component"
 
 ```javascript
@@ -66,9 +67,10 @@ const Widget = (props) => {
     </div>
   );
 }
+
 ```
 
-* Using Refs to access component (refs won't work with stateless component)
+###### Using Refs to access component (refs won't work with stateless component)
 Need ReactDOM to read refs value
 ```javascript
   update(e) {
@@ -109,8 +111,8 @@ return (
 
 * Accessing child properties of your react markup ==> using this.props.children
 
-* Component Lifecyle -- Mounting Basic
-When component is added/removed from DOM, it's called mounting or umounting component. Include 3 stage
+###### Component Lifecyle -- Mounting Basic
+When component is added/removed from DOM, it's called mounting or umounting component. Include 3 stage:
 
 1. componentWillMount
 
@@ -144,14 +146,14 @@ When component is added/removed from DOM, it's called mounting or umounting comp
   }
 ```
 
-* How to use component lifecyle?
+###### How to use component lifecyle?
 1. componentWillMount ==> can set up extra state value for DOM accessing here
 
 2. componentDidMount ==> at this stage you already have access to DOM (ReactDOM.findDOMNode), at this stage, we could start execute function, update DOM in interval for eg
 
 3. componentWillUmount ==> at this stage, we can clear whatever we set up in componentDidMount
 
-* Update life cycle of a component
+###### Update life cycle of a component
 
 1. componentWillReceiveProps(nextProps)
 
@@ -159,7 +161,7 @@ When component is added/removed from DOM, it's called mounting or umounting comp
 
 3. componentDidUpdate(prevProps, prevState)
 
-* Higher Order Components (Mixins ES6)
+###### Higher Order Components (Mixins ES6)
 
 ```javascript
 //Defined mixins
@@ -186,7 +188,7 @@ const Button = (props) => {
 let ButtonMixed = Mixin(Button);
 ```
 
-* Composable/Reusable Components
+###### Composable/Reusable Components
 
 ```javascript
 //Define your component dynamically as below
@@ -210,19 +212,19 @@ NumberInput.defaultProps = {
 };
 ```
 
-* Dynamically Generated Components
+###### Dynamically Generated Components
 Note: each child should have unique "key" prop (check Dynamic.js)
 
 ```javascript
 return <PersonRow key={person.id} data={person} />;
 ```
 
-* Build jsx transpiler
+###### Build jsx transpiler
 -- Notice: By the time I try this, seem like babel-cor 6.x version does not make "babel" global object. So this experiment still use 5.x
 
 -- Note: react not support if statement too well
 
-The following snippet code can be experiment in .jsx transform code that I'm writing
+The following snippet code can be experiment in .jsx transform code that I am writing
 ```jsx
 const App = (props) => {
   return (
@@ -256,7 +258,7 @@ var App = function App(props) {
 /* comment */
 ```
 
-* Pre-compile JSX
+###### Pre-compile JSX
 Use babel-cli
 ```
 sudo npm i babel-cli -g
