@@ -272,3 +272,35 @@ babel --presets react src.js -o dist.js --watch
 If your component is simple, React.createElement() will work, as thing get more complicated, using JSX is recommended
 
 * React developer tool (Chrome add-on)
+
+###### How to handle tenary (if;else)
+```
+author={comment.added_by != null ? comment.added_by.username : 'Anonymous'}
+```
+
+```javascript
+var CommentList = React.createClass({
+  var commentNodes = this.props.comments.map(function(comment) {
+    return (<Comment blurb={comment.blurb} author={comment.added_by != null ? comment.added_by.username : 'Anonymous'}></Comment>);
+  });
+
+  return (
+    <div className="commentList">{commentNodes}</div>
+  );
+})
+
+```
+
+###### How to style inline element
+```javascript
+render: function() {
+  var inlineStyle = {color: "pink", fontSize: "32px"};
+  return (
+    <div className="commentBox">
+      <h1 style={inlineStyle}>Comment</h1>
+      <CommentList comments={this.state.comments} />
+    </div>
+  );
+}
+
+```
