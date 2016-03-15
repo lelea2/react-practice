@@ -7,8 +7,6 @@ import Todos from "./pages/Todos";
 import Layout from "./pages/Layout";
 import Settings from "./pages/Settings";
 
-const app = document.getElementById('app');
-
 ReactDOM.render(
   <Router history={hashHistory}>
     <Route path="/" component={Layout}>
@@ -16,4 +14,5 @@ ReactDOM.render(
       <Route path="favorites" component={Favorites}></Route>
       <Route path="settings" component={Settings}></Route>
     </Route>
-  </Router>, document.getElementById('app'));
+  </Router>, document.getElementById('app')
+);
