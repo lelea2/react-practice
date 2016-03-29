@@ -55,6 +55,29 @@ ReactDOM.render(
 ###### State Basics
 Collection of value that supposed to be mananged by component itself
 
+###### States vs. Props
+* State changed in component, component will automatically rendered and changed the effective node. If no state change, it won't do it at all
+```
+render() {
+  setTimeout(() => {
+    this.setState({name: "Bob"});
+  }, 1000);
+  return (
+    <div>{this.state.name}</div>
+  );
+}
+```
+
+* Important: How to access props from other layout ==> remmember to always use bind() to you event handling
+```
+render() {
+  return (
+    <input onChange={this.handleChange.bind(this)} />
+  );
+}
+}
+```
+
 ###### Owner vs. Ownee relationship
 When one component render another component in react, we call this owner/ownee relationship. Parent component also called "Composite component"
 
@@ -112,6 +135,9 @@ return (
 * Accessing child properties of your react markup ==> using this.props.children
 
 ###### Component Lifecyle -- Mounting Basic
+
+* Read: http://busypeoples.github.io/post/react-component-lifecycle/
+
 When component is added/removed from DOM, it's called mounting or umounting component. Include 3 stage:
 
 1. componentWillMount
@@ -146,7 +172,7 @@ When component is added/removed from DOM, it's called mounting or umounting comp
   }
 ```
 
-###### How to use component lifecyle?
+###### How to use component lifecyle
 1. componentWillMount ==> can set up extra state value for DOM accessing here
 
 2. componentDidMount ==> at this stage you already have access to DOM (ReactDOM.findDOMNode), at this stage, we could start execute function, update DOM in interval for eg
@@ -304,3 +330,68 @@ render: function() {
 }
 
 ```
+
+###### Handle routing
+```
+import { Router, Route, Link, browserHistory } from 'react-router'
+```
+
+```javascript
+<Route path="/" component={Layout}>
+  <Route path="archives:article" name="archive" component={Article} />
+</Route>
+
+//In archive component
+console.log(this.props); ==> give you this.props.params and this.props.location.query
+```
+
+```javascripts
+var React = require('React');
+var Main = require('../components/Main');
+var Home = require('../components/Home');
+var Router = require('react-router');
+var Route = Router.Route;
+var IndexRoute = Router.IndexRoute;
+
+module.exports = (
+  <Route path="/" component={Main}>
+    <IndexRoute component={Home} />
+  </Route>
+);
+
+//Rendering in Main
+<div className="container">
+  {this.props.children} //contains content of your route
+</div>
+```
+
+###### class in React
+Javascript preserved word "class", therefore we will need to use "className". We could use class in reactJs if we are using "react-html-attrs", which ill transform class to className in React code
+
+###### Flux
+Pattern to building React component
+
+* Components -> Actions -> Dispatcher -> Stores -> Components
+
+* Store will only react to the component it care about
+
+```
+Dispatcher.dispatch({
+  type: "CREATE_TODO",
+  title: "Somce title"
+});
+
+Dispatcher.dispatch({
+  type: "DELETE_TODO",
+  id: 4124
+});
+```
+
+* Actions – Helper methods that facilitate passing data to the Dispatcher
+* Dispatcher – Receives actions and broadcasts payloads to registered callbacks
+* Stores – Containers for application state & logic that have callbacks registered to the dispatcher
+* Controller Views – React Components that grab the state from Stores and pass it down via props to child components.
+
+###### Components
+Need to maintain relationship between parent and children components
+
