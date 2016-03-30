@@ -4,6 +4,8 @@
 sudo npm i babel webpack webpack-dev-server -g
 ```
 
+Webpack and babel transpiler to transform ES6
+
 ```
 npm i react react-dom --save
 npm i babel-loader babel-core babel-preset-es2015 babel-preset-react
@@ -304,3 +306,20 @@ render: function() {
 }
 
 ```
+
+##### React flux
+Action -> Distpatcther -> Store -> View -> Action
+
+```
+npm install flux react react-dom react-router --save
+```
+
+###### Dispatcher
+* register()
+
+* dispatch() ==> prevent race condition, making sure each condition is executed in the order it is receive
+
+* store() ==> manage the state of your app
+
+It is important to register key when you have to manage mutiple dispatcher and store
+
