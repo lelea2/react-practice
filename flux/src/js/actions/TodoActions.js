@@ -23,12 +23,12 @@ export function reloadTodos() {
     dispatcher.dispatch({type: "RECEIVE_TODOS", todos: [
       {
         id: 8484848484,
-        text: "Go Shopping Again",
+        text: "Something new",
         complete: false
       },
       {
         id: 6262627272,
-        text: "Hug Wife",
+        text: "Testing",
         complete: true
       },
     ]});
