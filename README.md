@@ -333,23 +333,6 @@ render: function() {
 
 ```
 
-
-##### React flux
-Action -> Distpatcther -> Store -> View -> Action
-
-```
-npm install flux react react-dom react-router --save
-```
-
-###### Dispatcher
-* register()
-
-* dispatch() ==> prevent race condition, making sure each condition is executed in the order it is receive
-
-* store() ==> manage the state of your app
-
-It is important to register key when you have to manage mutiple dispatcher and store
-
 ###### Handle routing
 ```
 import { Router, Route, Link, browserHistory } from 'react-router'
@@ -385,7 +368,7 @@ module.exports = (
 ```
 
 ###### class in React
-Javascript preserved word "class", therefore we will need to use "className". We could use class in reactJs if we are using "react-html-attrs", which ill transform class to className in React code
+Javascript preserved word "class", therefore we will need to use "className". We could use class in reactJs if we are using **"react-html-attrs"**, which ill transform class to className in React code
 
 ###### Flux
 Pattern to building React component
@@ -410,6 +393,8 @@ Dispatcher.dispatch({
 * Dispatcher – Receives actions and broadcasts payloads to registered callbacks
 * Stores – Containers for application state & logic that have callbacks registered to the dispatcher
 * Controller Views – React Components that grab the state from Stores and pass it down via props to child components.
+
+It is important to register key when you have to manage mutiple dispatcher and store
 
 ###### Components
 Need to maintain relationship between parent and children components
